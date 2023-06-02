@@ -9,5 +9,6 @@ EditorBuildSettings:
     path: Assets/Title.unity
     guid: dc8eda89a5b7943b48082ca75ce68d79
   - enabled: 1
-    path: Assets/Plugins/UnityProject/Main.unity
+    path: Assets/Main.unity
     guid: d860931ab30d0a347b7c17fdc7667d93
+  m_configObjects: {}

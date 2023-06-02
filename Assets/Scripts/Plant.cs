@@ -58,7 +58,7 @@ public class Plant: MonoBehaviour {
 			float red = (Random.Range(70f, 120f) % 100f)/100f;
 			color = Random.ColorHSV (red, red, 1, 1, 1, 1);
 		} else if (plantType == PlantType.friendly) {
-			lifeSpan = Random.Range (3, 7);
+			lifeSpan = Random.Range (10, 20);
 			cellLifeSpan = int.MaxValue;
 			color = Random.ColorHSV (0.20f, 0.55f, 1, 1, 1 ,1);
 		} else {
@@ -66,7 +66,6 @@ public class Plant: MonoBehaviour {
 			cellLifeSpan = int.MaxValue;
 			color = Random.ColorHSV (0.5f, 0.8f, 1, 1, 1,1);
 		}
-
 
 		cells = new List<Cell> ();
 		rule = new int[10];
@@ -238,18 +237,13 @@ public class Plant: MonoBehaviour {
 	public void ContactNeighbours(Cell c){
 		foreach (Cell n in c.neighbours) {
 
-			//don't bother if it's part of plant.
+			if (n.plant != this) {
 
-			if (n.plant == this) {
-				
-				
-			}else{
-
-				//n.plant == null && generations < lifeSpan
 				if (n.plant == null && generations < lifeSpan) {
 					Add (n);
 				} else {
 					switch (plantType) {
+
 
 					case PlantType.deadly:
 
@@ -291,6 +285,7 @@ public class Plant: MonoBehaviour {
 
 					}
 				}
+				
 			}
 
 		}
